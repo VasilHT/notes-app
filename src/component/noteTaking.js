@@ -11,9 +11,8 @@ class NoteTaking extends Component {
   }
 
   addNote(event) {
-    if (this.theTitle.value !== "") {
+    if (this.theNote.value !== "") {
       var newItem = {
-        title: this.theTitle.value,
         note: this.theNote.value,
       };
     }
@@ -25,7 +24,6 @@ class NoteTaking extends Component {
     });
 
     this.theNote.value = "";
-    this.theTitle.value = "";
 
     console.log(this.state.items);
 
@@ -36,29 +34,22 @@ class NoteTaking extends Component {
     return (
       <div>
         <header>
-          <h1>Note Taking App</h1>
+          <h1>My notes</h1>
         </header>
         <div className="main-content">
           <ul>
             {this.state.items.map((val) => (
-              <li>
-                {val.title} - {val.note}
-              </li>
+              <li>{val.note}</li>
             ))}
           </ul>
         </div>
         <footer>
           <form onSubmit={this.addNote}>
-            <input
-              type="text"
-              placeholder="Enter the note title here"
-              ref={(title) => (this.theTitle = title)}
-            />
             <textarea
               placeholder="Enter your note here"
               ref={(note) => (this.theNote = note)}
             />
-            <button type="submit">Add Note</button>
+            <button type="submit">ADD NEW</button>
           </form>
         </footer>
       </div>
