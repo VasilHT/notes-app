@@ -1,7 +1,37 @@
 import React, { Component } from "react";
 
 class NoteTaking extends Component {
-  //state = {};
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      items: [],
+    };
+    this.addNote = this.addNote.bind(this);
+  }
+
+  addNote(event) {
+    if (this.theTitle.value !== "") {
+      var newItem = {
+        title: this.theTitle.value,
+        note: this.theNote.value,
+      };
+    }
+
+    this.setState((prevState) => {
+      return {
+        items: prevState.items.concat(newItem),
+      };
+    });
+
+    this.theNote.value = "";
+    this.theTitle.value = "";
+
+    console.log(this.state.items);
+
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div>
@@ -9,12 +39,25 @@ class NoteTaking extends Component {
           <h1>Note Taking App</h1>
         </header>
         <div className="main-content">
-          <p>Our data will go here</p>
+          <ul>
+            {this.state.items.map((val) => (
+              <li>
+                {val.title} - {val.note}
+              </li>
+            ))}
+          </ul>
         </div>
         <footer>
-          <form>
-            <input type="text" />
-            <textarea />
+          <form onSubmit={this.addNote}>
+            <input
+              type="text"
+              placeholder="Enter the note title here"
+              ref={(title) => (this.theTitle = title)}
+            />
+            <textarea
+              placeholder="Enter your note here"
+              ref={(note) => (this.theNote = note)}
+            />
             <button type="submit">Add Note</button>
           </form>
         </footer>

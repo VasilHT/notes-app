@@ -1,0 +1,65 @@
+header {
+  background-color: rgb(51, 83, 47);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+body {
+  background-color: rgb(143, 207, 149);
+}
+
+footer {
+  background-color: rgb(51, 83, 47);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+}
+
+.main-content ul {
+  text-align: center;
+  list-style: none;
+}
+
+.main-content ul li {
+  padding: 15px;
+  background-color: rgb(183, 255, 183);
+  border-radius: 10px;
+  margin: 10px 0;
+  color: black;
+}
+
+footer form input,
+footer form textarea {
+  border: rgb(0, 0, 0);
+  /* border-bottom: 1px solid rgb(0, 0, 0); */
+  background-color: rgb(51, 83, 47);
+  outline: 1px solid rgb(255, 255, 255);
+  color: #fff;
+  font-size: 14px;
+  display: block;
+  text-align: center;
+  width: 300px;
+  margin: auto;
+  padding: auto;
+}
+
+footer form textarea {
+  height: 50px;
+  color: #fff;
+  padding: auto;
+}
+
+footer form button {
+  padding: 10px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgb(20, 124, 12);
+  border: none;
+  margin-top: 20px;
+}

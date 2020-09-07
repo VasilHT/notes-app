@@ -1,5 +1,6 @@
 import React from "react";
 import NoteTaking from "./component/noteTaking";
+import "./component/noteTaking.css";
 
 function App() {
   return (
