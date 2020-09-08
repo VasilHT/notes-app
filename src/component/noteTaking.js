@@ -26,7 +26,6 @@ class NoteTaking extends Component {
       let items = JSON.parse(localStorage.getItem("notes"));
       items.push(newItem);
       localStorage.setItem("notes", JSON.stringify(items));
-      console.log(items);
     }
 
     this.setState({
