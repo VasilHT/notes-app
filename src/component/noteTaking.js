@@ -5,35 +5,47 @@ class NoteTaking extends Component {
     super(props);
 
     this.state = {
-      items: [],
+      items: JSON.parse(localStorage.getItem("notes")),
     };
     this.addNote = this.addNote.bind(this);
   }
 
-  addNote(event) {
-    event.preventDefault();
+  addNote(e) {
+    e.preventDefault();
+    const data = localStorage.getItem("notes");
     const newItem = {
       note: this.theNote.value,
       //we need something unique data to manege (delete and edit) your notes, so this is basic way to use unique id
       id: Date.now(),
     };
+    if (data === null) {
+      let items = [];
+      items.push(newItem);
+      localStorage.setItem("notes", JSON.stringify(items));
+    } else {
+      let items = JSON.parse(localStorage.getItem("notes"));
+      items.push(newItem);
+      localStorage.setItem("notes", JSON.stringify(items));
+    }
 
     this.setState({
-      items: [...this.state.items, newItem],
+      items: JSON.parse(localStorage.getItem("notes")),
     });
 
-    localStorage.setItem("notes", JSON.stringify(this.state.items));
     this.theNote.value = "";
   }
 
   //delete function added
-  deleteSong = (id) => {
+  deleteNote = (id) => {
+    let updatedItems = this.state.items.filter((item) => item.id !== id);
     this.setState({
-      items: this.state.items.filter((item) => item.id !== id),
+      items: updatedItems,
     });
+    localStorage.setItem("notes", JSON.stringify(updatedItems));
   };
 
   render() {
+    const myitems = this.state.items;
     return (
       <div>
         <header>
@@ -41,15 +53,17 @@ class NoteTaking extends Component {
         </header>
         <div className="main-content">
           <ul>
-            {this.state.items.map((val) => (
-              // you have to use key for every single item, this point is very important
-              <li key={val.id}>
-                {val.note}
-                <button onClick={() => this.deleteSong(val.id)}>
-                  <span>&times;</span>
-                </button>
-              </li>
-            ))}
+            {myitems.length === 0 ? (
+              <h2>there no notes yet</h2>
+            ) : (
+              myitems.map((val) => (
+                // you have to use key for every single item, this point is very important
+                <li key={val.id}>
+                  {val.note}
+                  <button onClick={() => this.deleteNote(val.id)}>X</button>
+                </li>
+              ))
+            )}
           </ul>
         </div>
         <footer>
