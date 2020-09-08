@@ -39,8 +39,9 @@ footer {
 
 .main-content ul li button {
   background-color: rgb(109, 109, 109);
-  padding-left: auto;
-  margin-left: 8px;
+  font-size: 15px;
+  padding: auto;
+  margin-left: 12px;
   border-radius: 50%;
   color: rgb(233, 232, 232);
   border: none;

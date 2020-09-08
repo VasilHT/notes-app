@@ -31,16 +31,47 @@ class NoteTaking extends Component {
     event.preventDefault();
   }
 
+  /*
   removeNote(index) {
-    var temp = this.state.theNote;
-    temp.splice(index, 1);
-    this.setState({ theNote: temp });
+    // if (this.theNote.onclick.value === true) {
+    //   var deleteNote = {};
+    // }
+    // var temp = this.state.theNote;
+    // temp.splice(index, 1);
+    // this.setState({ theNote: temp });
   }
 
   // button.onClick = function(){
   //   button.parentElement.remove()
   //   return;
   // };
+  */
+
+  removeNote = (selectedItem) => {
+    const { listofdata } = this.state;
+
+    const newList = [...listofdata];
+
+    const itemIndex = newList.findIndex(
+      (item) => item.name === selectedItem.name
+    );
+
+    if (itemIndex > -1) {
+      newList.splice(itemIndex, 1);
+    } else {
+      newList.push(selectedItem);
+    }
+
+    this.setState({
+      listofdata: newList,
+    });
+  };
+
+  // hideAlert() {
+  //   this.setState({
+  //     isActive: false,
+  //   });
+  // }
 
   render() {
     return (
@@ -53,7 +84,23 @@ class NoteTaking extends Component {
             {this.state.items.map((val) => (
               <li>
                 {val.note}
-                <button>X</button>
+                {/* <div
+                  className="alert alert-warning alert-dismissible"
+                  role="alert"
+                >
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                    onClick={() => this.hideAlert()}
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div> */}
+                <button onclick="deleteNote">
+                  <span>&times;</span>
+                </button>
               </li>
             ))}
           </ul>
