@@ -1,5 +1,4 @@
 header {
-  /* background-color: rgb(51, 83, 47); */
   color: rgb(0, 0, 0);
   font-weight: 100;
   margin-left: 20px;
@@ -17,7 +16,6 @@ body {
 }
 
 footer {
-  /* background-color: rgb(51, 83, 47); */
   color: #fff;
   padding: 20px;
   text-align: left;
@@ -29,23 +27,25 @@ footer {
 .main-content ul {
   text-align: left;
   list-style: none;
-  /* display: flex; */
-  /* flex: 1; */
-  /* align-items: flex-start; */
-  /* align-self: flex-start; */
 }
 
 .main-content ul li {
-  /* padding: 15px;
-  background-color: rgb(183, 255, 183);
-  border-radius: 10px;
-  margin: 10px 0;
-  color: black; */
   background-color: rgb(233, 232, 232);
   margin: 10px 0;
   padding: 10px 10px 10px 10px;
   border-radius: 12px;
-  /* align-self: flex-start; */
+  display: table;
+}
+
+.main-content ul li button {
+  background-color: rgb(109, 109, 109);
+  padding-left: auto;
+  margin-left: 8px;
+  border-radius: 50%;
+  color: rgb(233, 232, 232);
+  border: none;
+  height: 20px;
+  width: 20px;
 }
 
 footer form textarea {
@@ -61,7 +61,6 @@ footer form textarea {
 
 footer form textarea {
   height: 50px;
-  /* color: rgb(255, 255, 255); */
   padding: auto;
 }
 

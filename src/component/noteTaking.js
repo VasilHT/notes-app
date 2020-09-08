@@ -8,6 +8,7 @@ class NoteTaking extends Component {
       items: [],
     };
     this.addNote = this.addNote.bind(this);
+    this.removeNote = this.removeNote.bind(this);
   }
 
   addNote(event) {
@@ -30,6 +31,17 @@ class NoteTaking extends Component {
     event.preventDefault();
   }
 
+  removeNote(index) {
+    var temp = this.state.theNote;
+    temp.splice(index, 1);
+    this.setState({ theNote: temp });
+  }
+
+  // button.onClick = function(){
+  //   button.parentElement.remove()
+  //   return;
+  // };
+
   render() {
     return (
       <div>
@@ -39,7 +51,10 @@ class NoteTaking extends Component {
         <div className="main-content">
           <ul>
             {this.state.items.map((val) => (
-              <li>{val.note}</li>
+              <li>
+                {val.note}
+                <button>X</button>
+              </li>
             ))}
           </ul>
         </div>
