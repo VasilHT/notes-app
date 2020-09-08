@@ -10,8 +10,6 @@ class NoteTaking extends Component {
     this.addNote = this.addNote.bind(this);
   }
 
-  localData = JSON.parse(localStorage.getItem("notes"));
-
   addNote(e) {
     e.preventDefault();
     const data = localStorage.getItem("notes");
@@ -25,14 +23,14 @@ class NoteTaking extends Component {
       items.push(newItem);
       localStorage.setItem("notes", JSON.stringify(items));
     } else {
-      let items = this.localData;
+      let items = JSON.parse(localStorage.getItem("notes"));
       items.push(newItem);
       localStorage.setItem("notes", JSON.stringify(items));
       console.log(items);
     }
 
     this.setState({
-      items: this.localData,
+      items: JSON.parse(localStorage.getItem("notes"))
     });
 
     this.theNote.value = "";
