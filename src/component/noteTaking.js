@@ -45,7 +45,9 @@ class NoteTaking extends Component {
               // you have to use key for every single item, this point is very important
               <li key={val.id}>
                 {val.note}
-                <button onClick={() => this.deleteSong(val.id)}>X</button>
+                <button onClick={() => this.deleteSong(val.id)}>
+                  <span>&times;</span>
+                </button>
               </li>
             ))}
           </ul>
