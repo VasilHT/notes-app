@@ -8,7 +8,6 @@ class NoteTaking extends Component {
       items: []
     };
     this.addNote = this.addNote.bind(this);
-    this.removeNote = this.removeNote.bind(this);
   }
 
   addNote(event) {
