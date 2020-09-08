@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import NoteTaking from "./component/noteTaking";
+//import NoteTaking from "./component/noteTaking";
 import * as serviceWorker from "./serviceWorker";
+import MyNotes from "./component/MyNotes";
 
 ReactDOM.render(
   <React.StrictMode>
-    <NoteTaking />
+    {/* <NoteTaking /> */}
+    <MyNotes/>
   </React.StrictMode>,
   document.getElementById("root")
 );

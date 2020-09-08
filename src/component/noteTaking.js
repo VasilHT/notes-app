@@ -18,18 +18,11 @@ class NoteTaking extends Component {
       //we need something unique data to manege (delete and edit) your notes, so this is basic way to use unique id
       id: Date.now(),
     };
-    if (data === null) {
-      let items = [];
-      items.push(newItem);
-      localStorage.setItem("notes", JSON.stringify(items));
-    } else {
-      let items = JSON.parse(localStorage.getItem("notes"));
-      items.push(newItem);
-      localStorage.setItem("notes", JSON.stringify(items));
-    }
-
+    let items = data === null ? [] : JSON.parse(localStorage.getItem("notes"));
+    items.push(newItem);
+    localStorage.setItem("notes", JSON.stringify(items));
     this.setState({
-      items: JSON.parse(localStorage.getItem("notes"))
+      items: JSON.parse(localStorage.getItem("notes")),
     });
 
     this.theNote.value = "";
@@ -53,15 +46,17 @@ class NoteTaking extends Component {
         </header>
         <div className="main-content">
           <ul>
-            {myitems.length === 0
-              ? (<h2>there no notes yet</h2>)
-              : myitems.map((val) => (
-                  // you have to use key for every single item, this point is very important
-                  <li key={val.id}>
-                    {val.note}
-                    <button onClick={() => this.deleteNote(val.id)}>X</button>
-                  </li>
-                ))}
+            {myitems.length === 0 ? (
+              <h2>there no notes yet</h2>
+            ) : (
+              myitems.map((val) => (
+                // you have to use key for every single item, this point is very important
+                <li key={val.id}>
+                  {val.note}
+                  <button onClick={() => this.deleteNote(val.id)}>X</button>
+                </li>
+              ))
+            )}
           </ul>
         </div>
         <footer>
