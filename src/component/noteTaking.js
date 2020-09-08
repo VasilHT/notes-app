@@ -5,30 +5,33 @@ class NoteTaking extends Component {
     super(props);
 
     this.state = {
-      items: [],
+      items: []
     };
     this.addNote = this.addNote.bind(this);
   }
 
   addNote(event) {
-    if (this.theNote.value !== "") {
-      var newItem = {
-        note: this.theNote.value,
-      };
-    }
+    event.preventDefault();
+    const newItem = {
+      note: this.theNote.value,
+      //we need something unique data to manege (delete and edit) your notes, so this is basic way to use unique id
+      id: Date.now(),
+    };
 
-    this.setState((prevState) => {
-      return {
-        items: prevState.items.concat(newItem),
-      };
+    this.setState({
+      items: [...this.state.items, newItem],
     });
 
+    localStorage.setItem("notes", JSON.stringify(this.state.items));
     this.theNote.value = "";
-
-    console.log(this.state.items);
-
-    event.preventDefault();
   }
+
+  //delete function added
+  deleteSong = (id) => {
+    this.setState({
+      items: this.state.items.filter((item) => item.id !== id),
+    });
+  };
 
   render() {
     return (
@@ -39,7 +42,11 @@ class NoteTaking extends Component {
         <div className="main-content">
           <ul>
             {this.state.items.map((val) => (
-              <li>{val.note}</li>
+              // you have to use key for every single item, this point is very important
+              <li key={val.id}>
+                {val.note}
+                <button onClick={() => this.deleteSong(val.id)}>X</button>
+              </li>
             ))}
           </ul>
         </div>
@@ -48,6 +55,7 @@ class NoteTaking extends Component {
             <textarea
               placeholder="Enter your note here"
               ref={(note) => (this.theNote = note)}
+              required
             />
             <button type="submit">ADD NEW</button>
           </form>

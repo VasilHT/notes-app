@@ -7,7 +7,84 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: rgb(255, 255, 255);
+  text-align: left;
+}
+
+#root {
+  margin: auto;
+  max-width: 800px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+header {
+  color: rgb(0, 0, 0);
+  font-weight: 100;
+  margin: 0 0 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+  font-weight: 100;
+}
+
+footer {
+  color: #fff;
+  text-align: left;
+  bottom: 0;
+}
+
+.main-content ul {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+}
+
+.main-content ul li {
+  background-color: rgb(233, 232, 232);
+  margin: 10px 0;
+  padding: 10px 10px 10px 10px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main-content ul li button {
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 4px;
+  display: flex;
+  font-size: 10px;
+  align-items: center;
+  padding: 0 7px;
+  cursor: pointer;
+}
+
+.main-content ul li button:hover {
+  background: orange;
+}
+
+footer form textarea {
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  display: block;
+  text-align: left;
+  height: 60px;
+  width: 50%;
+  min-width: 260px;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+footer form button {
+  color: #fff;
+  font-size: 10px;
+  background-color: rgb(209, 165, 63);
+  border: none;
+  border-radius: 6px;
+  margin-top: 20px;
+  padding: 10px 20px;
 }
