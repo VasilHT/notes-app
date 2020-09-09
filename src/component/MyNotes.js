@@ -27,7 +27,7 @@ const MyNotes = () => {
       </header>
       <div className="main-content">
         <ul>
-          {notes.length === 0 ? (
+          {notes === null || notes.length === 0 ? (
             <h2>there is no notes yet</h2>
           ) : (
             notes.map((item) => {

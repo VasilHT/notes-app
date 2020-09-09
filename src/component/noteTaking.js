@@ -38,7 +38,7 @@ class NoteTaking extends Component {
   };
 
   render() {
-    const myitems = this.state.items;
+    const items = this.state.items;
     return (
       <div>
         <header>
@@ -46,11 +46,10 @@ class NoteTaking extends Component {
         </header>
         <div className="main-content">
           <ul>
-            {myitems.length === 0 ? (
+            {items === null || items.length === 0 ? (
               <h2>there no notes yet</h2>
             ) : (
-              myitems.map((val) => (
-                // you have to use key for every single item, this point is very important
+              items.map((val) => (
                 <li key={val.id}>
                   {val.note}
                   <button onClick={() => this.deleteNote(val.id)}>X</button>
